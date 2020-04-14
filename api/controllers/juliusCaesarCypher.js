@@ -51,21 +51,36 @@ const decryptMessage = app => {
     let cifrado = database.cifrado.toLowerCase()
     for(let c in cifrado) {
       let index = alphabet.indexOf(cifrado[c])
-      let decryptedIndex = index + num_casas
+
+      let decryptedIndex = index - num_casas
+
       if(index > -1) {
-        if(decryptedIndex > alphabet.length) {
-          decryptedIndex -= alphabet.length
+        if(decryptedIndex > 0) {
+          decryptedIndex = alphabet.length - decryptedIndex
         }
         message += alphabet[decryptedIndex]
       } else {
         message += cifrado[c]
       }
+
+      // let decryptedIndex = index + num_casas
+      // if(index > -1) {
+      //   if(decryptedIndex > alphabet.length) {
+      //     decryptedIndex -= alphabet.length
+      //   }
+      //   message += alphabet[decryptedIndex]
+      // } else {
+      //   message += cifrado[c]
+      // }
     }
   }
-  
-  database.decifrado = message.toLowerCase()
 
-  writeFile(JSON.stringify(database))
+  console.log(database.cifrado)
+  console.log(message);
+  
+  // database.decifrado = message.toLowerCase()
+
+  // writeFile(JSON.stringify(database))
 
 }
 
