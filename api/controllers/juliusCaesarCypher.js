@@ -99,7 +99,7 @@ const sendFile = () => {
       headers: {
         ...formHeaders
       }
-    }).then(response => console.log(response))
+    }).then(response => console.log(response.data))
     .catch(error => error)
   } catch(error) {
       return error
