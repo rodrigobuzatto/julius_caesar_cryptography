@@ -63,7 +63,7 @@ const decryptMessage = app => {
     }
   }
   
-  database.decifrado = message
+  database.decifrado = message.toLowerCase()
 
   writeFile(JSON.stringify(database))
 
