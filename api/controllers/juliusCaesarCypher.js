@@ -54,33 +54,20 @@ const decryptMessage = app => {
 
       let decryptedIndex = index - num_casas
 
-      if(index > -1) {
-        if(decryptedIndex > 0) {
-          decryptedIndex = alphabet.length - decryptedIndex
+      if(index !== -1) {
+        if(decryptedIndex < 0) {
+          decryptedIndex = alphabet.length + decryptedIndex
         }
         message += alphabet[decryptedIndex]
       } else {
         message += cifrado[c]
-      }
-
-      // let decryptedIndex = index + num_casas
-      // if(index > -1) {
-      //   if(decryptedIndex > alphabet.length) {
-      //     decryptedIndex -= alphabet.length
-      //   }
-      //   message += alphabet[decryptedIndex]
-      // } else {
-      //   message += cifrado[c]
-      // }
+      }      
     }
   }
-
-  console.log(database.cifrado)
-  console.log(message);
   
-  // database.decifrado = message.toLowerCase()
+  database.decifrado = message.toLowerCase()
 
-  // writeFile(JSON.stringify(database))
+  writeFile(JSON.stringify(database))
 
 }
 
